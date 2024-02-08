@@ -69,11 +69,25 @@ namespace krestnol
             Button button = (Button)sender;
             if (button.Content == " ")
             {
-                button.Content = HumanTurn ? "X" : "O";
+                if (HumanTurn)
+                {
+                    button.Content = "X";
+                }
+                else
+                {
+                    button.Content = "O";
+                }
                 button.IsEnabled = false;
                 if (Winner())
                 {
-                    MessageBox.Show((HumanTurn ? "Крестики" : "Нолики") + " выиграли!");
+                    if (HumanTurn)
+                    {
+                        MessageBox.Show("Крестики выиграли!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Нолики выиграли!");
+                    }
                     AllOff();
                 }
                 else if (Draw())
@@ -108,7 +122,14 @@ namespace krestnol
 
                 if (Winner())
                 {
-                   MessageBox.Show((HumanTurn ? "Крестики" : "Нолики") + " выиграли!");
+                    if (HumanTurn)
+                    {
+                        MessageBox.Show("Крестики выиграли!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Нолики выиграли!");
+                    }
                     AllOff();
                 }
                 else if (Draw())
